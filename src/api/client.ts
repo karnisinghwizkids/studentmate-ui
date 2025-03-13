@@ -1,13 +1,31 @@
 import axios from 'axios';
 
 const api = axios.create({
-  //baseURL: 'http://192.168.29.253:3000/',
   baseURL: 'https://gurukul-sm-api-995034495677.asia-south1.run.app',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization' : 'Bearer new_token',
   },
 });
+
+// Function to update the token dynamically
+const setAuthToken = (token) => {
+  api.defaults.headers['Authorization'] = `Bearer ${token}`;
+};
+
+// Login function to fetch token and set it
+export const login = async (credentials) => {
+  try {
+    const response = await api.post('/auth/login', credentials);
+    const newToken = response.data?.token;
+    if (newToken) {
+      setAuthToken(newToken);
+    }
+    return response;
+  } catch (error) {
+    console.error('Error during login:', error);
+    throw error;
+  }
+};
 
 // Add response interceptor for better error handling
 api.interceptors.response.use(
