@@ -5,7 +5,7 @@ const api = axios.create({
   baseURL: 'https://gurukul-sm-api-995034495677.asia-south1.run.app',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization' : 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHVkZW50SWQiOjIsInN0dWRlbnRDbGFzcyI6Niwic3R1ZGVudExldmVsIjoiTDYiLCJndXJ1a3VsVHlwZSI6IkcyIiwiaWF0IjoxNzQxNDI2ODEyLCJleHAiOjE3NDE1MTMyMTJ9.MvR09Cmn7kNp7HKvAR1a2a8E_J6k0mnLSoN2i3qSSkE',
+    'Authorization' : 'Bearer new_token',
   },
 });
 
