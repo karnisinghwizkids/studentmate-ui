@@ -10,6 +10,7 @@ const api = axios.create({
 // Function to update the token dynamically
 const setAuthToken = (token) => {
   api.defaults.headers['Authorization'] = `Bearer ${token}`;
+  console.log('Authorization:', api.defaults.headers['Authorization']); 
 };
 
 // Login function to fetch token and set it
@@ -17,6 +18,7 @@ export const login = async (credentials) => {
   try {
     const response = await api.post('/api/students/auth', credentials);
     const newToken = response.data?.token;
+    console.log('newToken:', newToken);
     if (newToken) {
       setAuthToken(newToken);
     }
@@ -46,7 +48,8 @@ api.interceptors.response.use(
 
 export const getLessons = async (topicId: string) => {
   try {
-    const response = await api.get(`/lessons/${topicId}`);
+   // const response = await api.get(`/lessons/${topicId}`);
+   const response = await api.get(`api/students/kitems?studentId=2&topicId=1&lessonId=101`);
     return response;
   } catch (error) {
     console.error('Error fetching lessons:', error);
