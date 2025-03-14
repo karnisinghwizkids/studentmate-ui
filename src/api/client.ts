@@ -15,7 +15,7 @@ const setAuthToken = (token) => {
 // Login function to fetch token and set it
 export const login = async (credentials) => {
   try {
-    const response = await api.post('/auth/login', credentials);
+    const response = await api.post('/api/students/auth', credentials);
     const newToken = response.data?.token;
     if (newToken) {
       setAuthToken(newToken);
