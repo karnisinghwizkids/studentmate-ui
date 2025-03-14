@@ -44,6 +44,7 @@ api.interceptors.response.use(
   }
 );
 
+/*
 export const getLessons = async () => {
   try {
     const response = await api.get('/lessons');
@@ -53,10 +54,33 @@ export const getLessons = async () => {
     throw error;
   }
 };
+*/
 
+export const getLessons = async (topicId: string) => {
+  try {
+    const response = await api.get(`/lessons/${topicId}`);
+    return response;
+  } catch (error) {
+    console.error('Error fetching lessons:', error);
+    throw error;
+  }
+};
+
+/*
 export const getTopics = async () => {
   try {
     const response = await api.get('/topics');
+    return response;
+  } catch (error) {
+    console.error('Error fetching topics:', error);
+    throw error;
+  }
+};
+*/
+
+export const getTopics = async (subjectId: string) => {
+  try {
+    const response = await api.get(`/topics/${subjectId}`);
     return response;
   } catch (error) {
     console.error('Error fetching topics:', error);

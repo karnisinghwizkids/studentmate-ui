@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { CheckCircle2 } from 'lucide-react';
 import Card from '../common/UI/Card/Card';
 import { Breadcrumbs } from '../common/components/Breadcrumbs';
+import { getLessons } from '../api/client'; // Import from client.tsx
 import './Topic.css';
 
 interface Lesson {
@@ -18,26 +18,25 @@ interface Lesson {
 function Topic() {
   const [lessons, setLessons] = useState<Lesson[]>([]);
   const [loading, setLoading] = useState(true);
-  const { subject, topic } = useParams();
-
-  const getLessons = async () => {
-    return axios.get(`/api/lessons/${topic}`);
-  };
+  const { subject, topic } = useParams(); // Get dynamic subject and topic from URL
 
   const loadLessons = async () => {
     try {
-      const response = await getLessons();
-      setLessons(response.data.lessons);
+      setLoading(true);
+      if (topic) {
+        const response = await getLessons(topic); // Pass dynamic topic ID
+        setLessons(response.data.lessons);
+      }
     } catch (error) {
-      console.error(error);
+      console.error('Error loading lessons:', error);
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    loadLessons();
-  }, []);
+    loadLessons(); // Load lessons on component mount
+  }, [topic]);
 
   if (loading) {
     return (
