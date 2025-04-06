@@ -184,7 +184,7 @@ export default function Scorecard() {
 
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* Student Overview */}
-        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 mb-8">
+        <div className="bg-primary-blue/10 backdrop-blur-sm rounded-lg p-6 mb-8">
           <div className="flex items-center gap-4 mb-6">
             <div className="w-16 h-16 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 flex items-center justify-center">
               <Trophy className="w-8 h-8 text-white" />
@@ -200,7 +200,7 @@ export default function Scorecard() {
           </div>
 
           {/* Daily Streak */}
-          <div className="bg-white/5 rounded-lg p-4 mb-6">
+          <div className="bg-primary-blue/5 rounded-lg p-4 mb-6">
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="text-lg font-semibold text-white">Daily Streak: {studentData.streak} days</h3>
@@ -213,7 +213,7 @@ export default function Scorecard() {
                 <p className="text-sm text-white/70">Today's reward</p>
               </div>
             </div>
-            <div className="mt-2 bg-white/10 rounded-full h-2">
+            <div className="mt-2 bg-primary-blue/10 rounded-full h-2">
               <div
                 className="bg-green-500 h-2 rounded-full transition-all duration-300"
                 style={{
@@ -224,14 +224,14 @@ export default function Scorecard() {
           </div>
 
           {/* Leaderboard */}
-          <div className="bg-white/5 rounded-lg p-4 mb-6">
+          <div className="bg-primary-blue/5 rounded-lg p-4 mb-6">
             <h3 className="text-lg font-semibold text-white mb-4">Top 5 Learners</h3>
             <div className="space-y-2">
               {studentData.leaderboard.map((player, index) => (
                 <div
                   key={player.name}
                   className={`flex items-center justify-between p-2 rounded ${
-                    player.name === studentData.name ? 'bg-white/20' : ''
+                    player.name === studentData.name ? 'bg-primary-blue/20' : ''
                   }`}
                 >
                   <div className="flex items-center gap-3">
@@ -245,22 +245,22 @@ export default function Scorecard() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="bg-white/5 rounded-lg p-4">
+            <div className="bg-primary-blue/5 rounded-lg p-4">
               <Book className="w-6 h-6 text-blue-400 mb-2" />
               <p className="text-2xl font-bold text-white">{studentData.lessonsCompleted}</p>
               <p className="text-sm text-white/70">Lessons Completed</p>
             </div>
-            <div className="bg-white/5 rounded-lg p-4">
+            <div className="bg-primary-blue/5 rounded-lg p-4">
               <Target className="w-6 h-6 text-green-400 mb-2" />
               <p className="text-2xl font-bold text-white">{studentData.quizzesTaken}</p>
               <p className="text-sm text-white/70">Quizzes Taken</p>
             </div>
-            <div className="bg-white/5 rounded-lg p-4">
+            <div className="bg-primary-blue/5 rounded-lg p-4">
               <Award className="w-6 h-6 text-yellow-400 mb-2" />
               <p className="text-2xl font-bold text-white">{studentData.averageQuizScore}%</p>
               <p className="text-sm text-white/70">Average Quiz Score</p>
             </div>
-            <div className="bg-white/5 rounded-lg p-4">
+            <div className="bg-primary-blue/5 rounded-lg p-4">
               <Flag className="w-6 h-6 text-red-400 mb-2" />
               <p className="text-2xl font-bold text-white">{studentData.streak} Days</p>
               <p className="text-sm text-white/70">Learning Streak</p>
@@ -269,7 +269,7 @@ export default function Scorecard() {
         </div>
 
         {/* Certificate */}
-        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 mb-8">
+        <div className="bg-primary-blue/10 backdrop-blur-sm rounded-lg p-6 mb-8">
           <div id="certificate" className="bg-white rounded-lg p-8 text-center mb-4">
             <div className="border-8 border-double border-gray-200 p-6">
               <h2 className="text-3xl font-bold text-gray-800 mb-4">Certificate of Achievement</h2>
@@ -305,7 +305,7 @@ export default function Scorecard() {
         </div>
 
         {/* Recent Activity */}
-        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 mb-8">
+        <div className="bg-primary-blue/10 backdrop-blur-sm rounded-lg p-6 mb-8">
           <h2 className="text-xl font-bold text-white mb-4">Recent Activity</h2>
           <div className="space-y-4">
             {studentData.recentActivities.map(activity => (
@@ -313,7 +313,7 @@ export default function Scorecard() {
                 key={activity.id}
                 className="flex items-center gap-4 text-white"
               >
-                <div className="bg-white/10 rounded-full p-2">
+                <div className="bg-primary-blue/10 rounded-full p-2">
                   {activity.type === 'lesson_complete' ? (
                     <Book className="w-5 h-5" />
                   ) : (
@@ -369,10 +369,10 @@ export default function Scorecard() {
             {studentData.achievements.map((achievement) => (
               <div
                 key={achievement.id}
-                className="bg-white/10 backdrop-blur-sm rounded-lg p-4 hover:translate-y-[-2px] transition-transform"
+                className="bg-primary-blue/10 backdrop-blur-sm rounded-lg p-4 hover:translate-y-[-2px] transition-transform"
               >
                 <div className="flex items-center gap-4">
-                  <div className="bg-white/10 rounded-lg p-2">
+                  <div className="bg-primary-blue/10 rounded-lg p-2">
                     {getIconComponent(achievement.icon)}
                   </div>
                   <div className="flex-1">
@@ -387,7 +387,7 @@ export default function Scorecard() {
                     </p>
                   </div>
                 </div>
-                <div className="mt-2 bg-white/5 rounded-full h-2">
+                <div className="mt-2 bg-primary-blue/5 rounded-full h-2">
                   <div
                     className="bg-blue-500 h-2 rounded-full transition-all duration-300"
                     style={{

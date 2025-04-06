@@ -1,31 +1,23 @@
-import React, { useEffect } from 'react';
-import Home from './Home/Home';
+import React, { useState } from 'react';
+import { Outlet } from 'react-router-dom';
+import { Header } from './components/Header';
+import { Splash } from './components/Splash';
 import './App.css';
-import { login } from './api/client'; // Import login function
 
 function App() {
-  useEffect(() => {
-    // Example credentials for login
-    const credentials =
-    {
-      "email": "test@example.com",
-      "password": "test123"
-    }
-
-    const handleLogin = async () => {
-      try {
-        const response = await login(credentials);
-        console.log('Login successful:', response.data);
-      } catch (error) {
-        console.error('Login failed:', error);
-      }
-    };
-
-    handleLogin(); // Call login on component mount (for testing)
-  }, []);
+  const [showSplash, setShowSplash] = useState(true);
 
   return (
-    <Home />
+    <>
+      {showSplash ? (
+        <Splash onComplete={() => setShowSplash(false)} />
+      ) : (
+        <div className="min-h-screen bg-primary-bg text-primary-text">
+          <Header />
+          <Outlet />
+        </div>
+      )}
+    </>
   );
 }
 

@@ -31,7 +31,7 @@ export const getGeminiResponse = async (prompt: string) => {
 
     Question/Topic from the student: ${prompt}`;
 
-    const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro-002' });
     const result = await model.generateContent(enhancedPrompt);
     
     if (!result || !result.response) {

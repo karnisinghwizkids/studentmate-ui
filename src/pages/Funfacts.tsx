@@ -102,7 +102,7 @@ export default function Funfacts() {
         </div>
 
         {filteredFacts.length > 0 ? (
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg overflow-hidden">
+          <div className="bg-primary-blue/10 backdrop-blur-sm rounded-lg overflow-hidden">
             <div className="relative aspect-video">
               <img
                 src={filteredFacts[currentFact].imageUrl}
@@ -122,7 +122,7 @@ export default function Funfacts() {
             <div className="flex justify-between items-center p-4">
               <button
                 onClick={previousFact}
-                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                className="p-2 rounded-full bg-primary-blue/10 hover:bg-primary-blue/20 transition-colors"
               >
                 <ChevronLeft className="w-6 h-6 text-white" />
               </button>
@@ -138,14 +138,14 @@ export default function Funfacts() {
               </div>
               <button
                 onClick={nextFact}
-                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                className="p-2 rounded-full bg-primary-blue/10 hover:bg-primary-blue/20 transition-colors"
               >
                 <ChevronRight className="w-6 h-6 text-white" />
               </button>
             </div>
           </div>
         ) : (
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 text-center">
+          <div className="bg-primary-blue/10 backdrop-blur-sm rounded-lg p-8 text-center">
             <Lightbulb className="w-16 h-16 text-white/50 mx-auto mb-4" />
             <p className="text-white text-lg">No facts found for this category.</p>
           </div>

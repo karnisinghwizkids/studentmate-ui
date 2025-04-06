@@ -1,51 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Beaker, Cpu, Award, Images, HelpCircle } from 'lucide-react';
-import Tile from '../../common/UI/Card/Card';
-import { Breadcrumbs } from '../../common/components/Breadcrumbs';
+import { topics } from '../../mocks/data';
+import Card from '../../common/UI/Card/Card';
 
 function Science() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500">
-      <div className="p-4">
-        <Breadcrumbs />
-      </div>
+    <div className="p-4">
       <div className="cards">
-        <Link to="/funda/science/gravity">
+        {topics.map(topic => (
           <Card
-            title="Gravity"
-            description="Fundamentals of gravity"
-            icon={<Beaker className="w-48 h-48 mb-3 text-yellow-300" />}
+            key={topic.id}
+            link={`/fundamentals/science/${topic.id}`}
+            title={topic.title}
+            description={topic.description}
+            imageUrl={topic.imageUrl}
+            progress={topic.progress}
+            lessons={topic.lessons}
           />
-        </Link>
-        <Link to="/funda/science/heat">
-          <Card
-            title="Heat"
-            description="Fundamentals of Heat"
-            icon={<Cpu className="w-48 h-48 mb-3 text-yellow-300" />}
-          />
-        </Link>
-        <Link to="/funda/science/light">
-          <Card
-            title="Light"
-            description="Fundamentals of Light"
-            icon={<Award className="w-48 h-48 mb-3 text-yellow-300" />}
-          />
-        </Link>
-        <Link to="/funda/science/sound">
-          <Card
-            title="Sound"
-            description="Fundamentals of Sound"
-            icon={<Images className="w-48 h-48 mb-3 text-yellow-300" />}
-          />
-        </Link>
-        <Link to="/funda/science/quiz">
-          <Card
-            title="Quiz"
-            description="Test your knowledge"
-            icon={<HelpCircle className="w-48 h-48 mb-3 text-yellow-300" />}
-          />
-        </Link>
+        ))}
       </div>
     </div>
   );

@@ -268,7 +268,7 @@ export default function Badges() {
                     className={`relative bg-gradient-to-br ${badge.color} rounded-lg p-6 text-white hover:scale-105 transition-transform`}
                   >
                     <div className="flex items-center gap-4 mb-4">
-                      <div className="bg-white/20 rounded-lg p-2">
+                      <div className="bg-primary-blue/20 rounded-lg p-2">
                         {badge.icon}
                       </div>
                       <div>

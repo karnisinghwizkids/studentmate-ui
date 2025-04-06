@@ -19,7 +19,7 @@ export function Breadcrumbs() {
   const pathnames = location.pathname.split('/').filter((x) => x);
 
   return (
-    <nav className="flex items-center space-x-2 px-4 py-3 bg-white/10 backdrop-blur-sm rounded-lg mb-4">
+    <nav className="flex items-center space-x-2 px-4 py-3 bg-primary-blue/10 backdrop-blur-sm rounded-lg mb-4">
       <Link
         to="/"
         className="text-white/80 hover:text-white flex items-center transition-colors"

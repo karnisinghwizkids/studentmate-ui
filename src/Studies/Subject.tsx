@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, Loader2 } from 'lucide-react';
 import Card from '../common/UI/Card/Card';
-import { Breadcrumbs } from '../common/components/Breadcrumbs';
+import api from '../api/client';
 import './Subject.css';
 
 interface Topic {
@@ -12,6 +12,7 @@ interface Topic {
   icon: string;
   lessons: number;
   progress: number;
+  imageUrl: string;
 }
 
 function Subject() {
@@ -23,11 +24,7 @@ function Subject() {
   useEffect(() => {
     const fetchTopics = async () => {
       try {
-        const response = await fetch(`/api/topics/${subject}`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch topics');
-        }
-        const data = await response.json();
+        const { data } = await api.get(`/topics/${subject}`);
         setTopics(data.topics);
         setError(null);
       } catch (error) {
@@ -43,12 +40,9 @@ function Subject() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500">
-        <div className="p-4">
-          <Breadcrumbs />
-        </div>
+      <div className="min-h-screen bg-primary-bg">
         <div className="flex items-center justify-center h-[calc(100vh-8rem)]">
-          <div className="text-white text-xl">Loading topics...</div>
+          <Loader2 className="w-8 h-8 text-primary-pink animate-spin" />
         </div>
       </div>
     );
@@ -56,22 +50,16 @@ function Subject() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500">
-        <div className="p-4">
-          <Breadcrumbs />
-        </div>
+      <div className="min-h-screen bg-primary-bg">
         <div className="flex items-center justify-center h-[calc(100vh-8rem)]">
-          <div className="text-white text-xl">{error}</div>
+          <div className="text-primary-text text-xl">{error}</div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500">
-      <div className="p-4">
-        <Breadcrumbs />
-      </div>
+    <div className="p-4">
       <div className="cards">
         {topics.map((topic) => (
           <div key={topic.id} className="relative">
@@ -87,17 +75,17 @@ function Subject() {
                 link={`/fundamentals/${subject}/${topic.id}`}
                 title={topic.title}
                 description={topic.description}
-                icon={topic.icon}
+                imageUrl={topic.imageUrl}
               />
               {topic.progress > 0 && (
                 <div className="absolute bottom-0 left-0 right-0 px-4 py-2">
-                <div className="w-full bg-white/20 rounded-full h-1.5 mt-1">
-                  <div
-                    className="bg-green-400 h-1.5 rounded-full transition-all duration-300"
-                    style={{ width: `${topic.progress}%` }}
-                  />
+                  <div className="w-full bg-primary-blue/20 rounded-full h-1.5 mt-1">
+                    <div
+                      className="bg-green-400 h-1.5 rounded-full transition-all duration-300"
+                      style={{ width: `${topic.progress}%` }}
+                    />
+                  </div>
                 </div>
-              </div>
               )}
             </div>
           </div>

@@ -162,7 +162,7 @@ export default function Funfrendz() {
               onClick={() => setSelectedClub(club)}
             >
               <div className="flex items-center gap-4 mb-4">
-                <div className="bg-white/20 rounded-lg p-2">
+                <div className="bg-primary-blue/20 rounded-lg p-2">
                   {club.icon}
                 </div>
                 <div>

@@ -169,7 +169,7 @@ export default function Gallery() {
         </div>
 
         {artworks.length === 0 ? (
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 text-center">
+          <div className="bg-primary-blue/10 backdrop-blur-sm rounded-lg p-8 text-center">
             <ImageIcon className="w-16 h-16 text-white/50 mx-auto mb-4" />
             <h2 className="text-xl font-semibold text-white mb-2">No artworks yet</h2>
             <p className="text-white/70">Start uploading your amazing creations!</p>
@@ -179,7 +179,7 @@ export default function Gallery() {
             {artworks.map((artwork) => (
               <div
                 key={artwork.id}
-                className="bg-white/10 backdrop-blur-sm rounded-lg overflow-hidden group"
+                className="bg-primary-blue/10 backdrop-blur-sm rounded-lg overflow-hidden group"
               >
                 <div className="aspect-video relative">
                   <img

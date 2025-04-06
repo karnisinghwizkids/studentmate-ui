@@ -59,8 +59,8 @@ export default function Chat() {
       </div>
 
       {/* Welcome Banner */}
-      <div className="bg-white/10 backdrop-blur-sm m-4 p-6 rounded-lg flex items-center gap-4">
-        <div className="bg-white/20 p-3 rounded-full">
+      <div className="bg-primary-blue/10 backdrop-blur-sm m-4 p-6 rounded-lg flex items-center gap-4">
+        <div className="bg-primary-blue/20 p-3 rounded-full">
           <Bot className="w-8 h-8 text-white" />
         </div>
         <div>
@@ -83,7 +83,7 @@ export default function Chat() {
                   ? 'bg-blue-600 text-white'
                   : message.error
                   ? 'bg-red-900/50 text-red-200 flex items-center gap-2'
-                  : 'bg-white/10 backdrop-blur-sm text-white'
+                  : 'bg-primary-blue/10 backdrop-blur-sm text-white'
               }`}
             >
               {message.error && <AlertCircle className="w-5 h-5 text-red-400" />}
@@ -93,7 +93,7 @@ export default function Chat() {
         ))}
         {isLoading && (
           <div className="flex justify-start">
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <div className="bg-primary-blue/10 backdrop-blur-sm rounded-lg p-4">
               <Loader2 className="w-6 h-6 animate-spin text-white" />
             </div>
           </div>
@@ -101,14 +101,14 @@ export default function Chat() {
         <div ref={messagesEndRef} />
       </div>
 
-      <form onSubmit={handleSubmit} className="p-4 border-t border-white/10">
+      <form onSubmit={handleSubmit} className="p-4 border-t border-primary-blue/10">
         <div className="flex gap-2">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Ask me anything! I'm here to help! 😊"
-            className="flex-1 bg-white/10 backdrop-blur-sm text-white rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-white/50"
+            className="flex-1 bg-primary-blue/10 backdrop-blur-sm text-white rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-white/50"
           />
           <Button
             type="submit"

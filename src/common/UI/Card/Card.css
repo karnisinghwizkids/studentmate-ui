@@ -1,13 +1,43 @@
 .card {
-  max-width: 16rem;
-  max-height: 16rem;
+  width: 100%;
+  padding: 1rem;
+  max-width: 20rem;
+  position: relative;
+}
 
-  .link {
-    display: flex;
-    flex-direction: column;
+/* Grid layout for cards container */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
 
-    .icon-container {
-      width: 100%;
-    }
+/* Responsive adjustments */
+@media (min-width: 640px) {
+  .cards {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   }
+}
+
+@media (min-width: 1024px) {
+  .cards {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+/* Animation keyframes */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.card:hover .icon-container {
+  animation: float 2s ease-in-out infinite;
 }
