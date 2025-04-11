@@ -43,13 +43,12 @@ jobs:
           fi
 
       - name: Authenticate with Firebase
-      
-       run: |
+        run: |
           echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}" > "${HOME}/firebase-service-account.json"
        
         env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-        run: firebase use --add ${{ secrets.FIREBASE_PROJECT_ID }}
+         run: firebase use --add ${{ secrets.FIREBASE_PROJECT_ID }}
         
 
       - name: Deploy to Firebase
