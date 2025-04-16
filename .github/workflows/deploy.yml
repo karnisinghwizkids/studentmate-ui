@@ -134,11 +134,12 @@ jobs:
   #       uses: zaproxy/action-baseline@v0.4.0
   #       with:
   #         target: 'https://studentmate-2b859.web.app'
-  - name: Run OWASP ZAP Baseline Scan
-  uses: zaproxy/action-baseline@v0.4.0
-  with:
-    target: 'https://studentmate-2b859.web.app'
-    docker_name: 'zaproxy/zap-stable'
+
+       - name: Run OWASP ZAP Baseline Scan
+          uses: zaproxy/action-baseline@v0.4.0
+          with:
+          target: 'https://studentmate-2b859.web.app'
+           docker_name: 'zaproxy/zap-stable'
 
 
   gitleaks-scan:
