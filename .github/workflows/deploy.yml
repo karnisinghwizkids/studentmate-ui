@@ -199,9 +199,11 @@ jobs:
       - name: Run npm audit (fail on high severity)
         run: npm audit --audit-level=high
 
-      - name: Generate SBOM with CycloneDX
-        uses: CycloneDX/gh-node-module-sbom@v1
-
+        - name: Generate SBOM with CycloneDX
+        uses: CycloneDX/cyclonedx-npm-action@v1.2.0
+        with:
+          output: bom.xml
+      
   lint:
     runs-on: ubuntu-latest
     steps:
