@@ -107,7 +107,7 @@
 
 
 
-Handles:
+#Handles:
 
 # Build and deploy to Firebase
 # Depends on security checks and lint
