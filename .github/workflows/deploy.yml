@@ -171,8 +171,7 @@
 #version 3:-
 
 
-
-  name: CI/CD Pipeline with Security Scanning
+name: CI/CD Pipeline with Security Scanning
 
 on:
   push:
@@ -227,7 +226,7 @@ jobs:
     needs: [dependency-check, lint]
     permissions:
       contents: read
-      id-token: write # For potential OIDC authentication
+      id-token: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -272,7 +271,7 @@ jobs:
         env:
           GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/service-account.json
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-      
+
       - name: Clean up sensitive files
         if: always()
         run: |
@@ -305,7 +304,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      
+
       - name: Dependency Review
         uses: actions/dependency-review-action@v3
         with:
@@ -362,16 +361,3 @@ jobs:
         if: always()
         with:
           sarif_file: gitleaks-report.sarif
-
-# Optional Slack alert block:
-#  alert-on-failure:
-#    runs-on: ubuntu-latest
-#    if: failure()
-#    steps:
-#      - name: Notify Slack on Failure
-#        uses: 8398a7/action-slack@v3
-#        with:
-#          status: ${{ job.status }}
-#          fields: repo,message,commit,author,action,eventName,ref,workflow
-#        env:
-#          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
