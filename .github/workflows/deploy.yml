@@ -170,7 +170,6 @@
 
 #version 3:-
 
-
 name: CI/CD Pipeline with Security Scanning
 
 on:
@@ -201,7 +200,7 @@ jobs:
         run: npm audit --audit-level=high
 
       - name: Generate SBOM with CycloneDX
-        run: npx @cyclonedx/bom
+        uses: CycloneDX/gh-node-module-sbom@v1
 
   lint:
     runs-on: ubuntu-latest
@@ -242,7 +241,6 @@ jobs:
 
       - name: Create .env file securely
         run: |
-          touch .env
           echo "VITE_GEMINI_API_KEY=$GEMINI_API_KEY" >> .env
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -329,7 +327,7 @@ jobs:
           severity: 'CRITICAL,HIGH'
 
       - name: Upload Trivy scan results to GitHub Security tab
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@v3
         if: always()
         with:
           sarif_file: trivy-results.sarif
@@ -357,7 +355,7 @@ jobs:
           verbose: true
 
       - name: Upload Gitleaks scan results to GitHub Security tab
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@v3
         if: always()
         with:
           sarif_file: gitleaks-report.sarif
