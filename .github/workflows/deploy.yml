@@ -172,6 +172,8 @@
 #           rm -f service-account.json .env
 
 
+
+
 #version 3:-
 
 name: CI/CD Pipeline with Security Scanning
@@ -203,7 +205,7 @@ jobs:
       - name: Run npm audit (fail on high severity)
         run: npm audit --audit-level=high
 
-        - name: Generate SBOM with CycloneDX
+      - name: Generate SBOM with CycloneDX
         uses: CycloneDX/cyclonedx-npm-action@v1.2.0
         with:
           output: bom.xml
