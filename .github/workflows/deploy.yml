@@ -206,7 +206,7 @@ jobs:
         run: npm audit --audit-level=high
 
       - name: Generate SBOM with CycloneDX
-        uses: CycloneDX/cyclonedx-npm-action@v1.2.0
+        uses: CycloneDX/cyclonedx-npm-action@v1
         with:
           output: bom.xml
       
