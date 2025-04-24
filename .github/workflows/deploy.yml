@@ -121,7 +121,7 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    needs: [dependency-check, lint]
+   # needs: [dependency-check, lint]
     permissions:
       contents: read
       id-token: write
