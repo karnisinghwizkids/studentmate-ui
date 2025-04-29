@@ -100,7 +100,6 @@
     #     run: firebase deploy --only hosting --project ${{ secrets.FIREBASE_PROJECT_ID }} --non-interactive
     #     env:
     #       GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/service-account.json
-#=====
 
 name: Deploy to Firebase Hosting
 
@@ -127,7 +126,8 @@ jobs:
 
       - name: Install Dependencies
         run: npm ci  
-        - name: Create .env file  
+
+      - name: Create .env file  
         run: |
          echo "VITE_GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}" >> .env
         
@@ -152,11 +152,3 @@ jobs:
 
 
 
-
-    #   - name: Authenticate with Firebase
-    #     env:
-    #       FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-    #     run: firebase use --add ${{ secrets.FIREBASE_PROJECT_ID }}
-
-    #   - name: Deploy to Firebase
-    #     run: firebase deploy --only hosting --project ${{ secrets.FIREBASE_PROJECT_ID }} --non-interactive
