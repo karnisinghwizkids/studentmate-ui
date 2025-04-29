@@ -101,7 +101,11 @@
     #     env:
     #       GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/service-account.json
 
-name: Deploy to Firebase Hosting
+
+
+
+
+    name: Deploy to Firebase Hosting
 
 on:
   push:
@@ -129,8 +133,7 @@ jobs:
 
       - name: Create .env file  
         run: |
-         echo "VITE_GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}" >> .env
-        
+          echo "VITE_GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}" >> .env
 
       - name: Build Project
         run: npm run build
@@ -141,14 +144,11 @@ jobs:
             echo "Error: Build directory 'dist/' does not exist! Deployment failed."
             exit 1
           fi
+
       - name: Write service account
         run: echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > service-account.json
-  
+
       - name: Deploy to Firebase
-          run: firebase deploy --only hosting --project ${{ secrets.FIREBASE_PROJECT_ID }} --non-interactive
-          env:
-            GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/service-account.json
-
-
-
-
+        run: firebase deploy --only hosting --project ${{ secrets.FIREBASE_PROJECT_ID }} --non-interactive
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/service-account.json
