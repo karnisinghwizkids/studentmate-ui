@@ -1,23 +1,23 @@
-# Handles:
+# # Handles:
 
-# Slack alert if any job fails
+# # Slack alert if any job fails
 
-name: Notify on Failure
+# name: Notify on Failure
 
-on:
-  workflow_run:
-    workflows: ["Deploy to Firebase", "Security Checks"]
-    types: [completed]
+# on:
+#   workflow_run:
+#     workflows: ["Deploy to Firebase", "Security Checks"]
+#     types: [completed]
 
-jobs:
-  alert:
-    if: ${{ failure() }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Slack Alert
-        uses: 8398a7/action-slack@v3
-        with:
-          status: failure
-          fields: repo,message,commit,author,action,eventName,ref,workflow
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+# jobs:
+#   alert:
+#     if: ${{ failure() }}
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Slack Alert
+#         uses: 8398a7/action-slack@v3
+#         with:
+#           status: failure
+#           fields: repo,message,commit,author,action,eventName,ref,workflow
+#         env:
+#           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
