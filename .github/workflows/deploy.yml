@@ -41,6 +41,9 @@ jobs:
             exit 1
           fi
 
+      - name: Copy vite.svg to dist folder
+        run: cp vite.svg dist/
+
       - name: Write Firebase Service Account Key to File
         run: echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > service-account.json
 
