@@ -138,6 +138,9 @@ jobs:
       - name: Build Project
         run: npm run build
 
+      - name: Copy public assets to dist
+        run: cp -r public/* dist/ || echo "No public folder found"
+
       - name: Check if Build Folder Exists
         run: |
           if [ ! -d "dist" ]; then
