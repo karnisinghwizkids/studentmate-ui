@@ -52,7 +52,6 @@
 
 
 
-
 # 2nd failed attempt
 
 # name: Deploy to Firebase Hosting
@@ -94,18 +93,14 @@
 #             exit 1
 #           fi
 
-#       - name: Write service account
-#         run: echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > service-account.json
+    #   - name: Write service account
+    #     run: echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > service-account.json
 
-#       - name: Deploy to Firebase
-#         run: firebase deploy --only hosting --project ${{ secrets.FIREBASE_PROJECT_ID }} --non-interactive
-#         env:
-#           GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/service-account.json
-
-
-
+    #   - name: Deploy to Firebase
+    #     run: firebase deploy --only hosting --project ${{ secrets.FIREBASE_PROJECT_ID }} --non-interactive
+    #     env:
+    #       GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/service-account.json
 #=====
-
 
 name: Deploy to Firebase Hosting
 
@@ -132,6 +127,10 @@ jobs:
 
       - name: Install Dependencies
         run: npm ci  
+        - name: Create .env file  
+        run: |
+         echo "VITE_GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}" >> .env
+        
 
       - name: Build Project
         run: npm run build
@@ -142,11 +141,22 @@ jobs:
             echo "Error: Build directory 'dist/' does not exist! Deployment failed."
             exit 1
           fi
-
-      - name: Authenticate with Firebase
-        env:
-          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-        run: firebase use --add ${{ secrets.FIREBASE_PROJECT_ID }}
-
+      - name: Write service account
+        run: echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > service-account.json
+  
       - name: Deploy to Firebase
-        run: firebase deploy --only hosting --project ${{ secrets.FIREBASE_PROJECT_ID }} --non-interactive
+          run: firebase deploy --only hosting --project ${{ secrets.FIREBASE_PROJECT_ID }} --non-interactive
+          env:
+            GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/service-account.json
+
+
+
+
+
+    #   - name: Authenticate with Firebase
+    #     env:
+    #       FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+    #     run: firebase use --add ${{ secrets.FIREBASE_PROJECT_ID }}
+
+    #   - name: Deploy to Firebase
+    #     run: firebase deploy --only hosting --project ${{ secrets.FIREBASE_PROJECT_ID }} --non-interactive
